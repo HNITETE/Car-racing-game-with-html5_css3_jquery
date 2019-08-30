@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <script>
+    $(document).ready(function(){
+        var c=0;
+        var p=0;
+        var winwigth = $(window).width();
+        var race = winwigth - $("#ic1").width();
+
+        
+
+        $("#jouer").click(function(){
+
+            var aleatoire1 = Math.floor(Math.random()*winwigth);
+            var aleatoire2 = Math.floor(Math.random()*winwigth);
+
+            $("#ic1").animate({
+                marginLeft: race
+            }, parseInt(aleatoire1) , function(){
+            });
+
+            $("#ic2").animate({
+                marginLeft: race
+            }, parseInt(aleatoire2) , function(){
+            });
+            if (aleatoire1 > aleatoire2){
+                c=c+1;
+                //alert("okey");
+                $("#vr").text("joueur vert: "+c);
+            }
+            else {
+                p=p+1;
+                $("#bl").text("joueur blue: "+p);
+            }
+        });
+
+        $("#repeter").click(function(){
+
+            $("#ic1").animate({
+              marginLeft: "0px"
+            }, "normale");
+
+            $("#ic2").animate({
+              marginLeft: "0px"
+            },"normale");
+            });
+        });
+    </script>
+    <style>
+    #back {
+        margin-top: 30px;
+        background-image: url('icon/route.jpg');
+        height: 500px;
+    }
+    img{
+        width: 150px;
+        height: 150px;
+    }
+    img#ic1{
+        margin-top: 50px;
+    }
+    img#ic2{
+        margin-top: 100px;
+    }
+    .text-center{
+        margin-top: 25px;
+    }
+    </style>
+</head>
+<body>
+        
+
+        <div class="text-center">
+                <label class="alert-info col-lg-2 shadow" id="bl">joueur blue:</label>
+                <label class="col-lg-7 col-form-label-lg border-light">Jeux</label>
+                <label class="alert-info col-lg-2 shadow" id="vr">joueur noire:</label>
+        </div>
+
+<div class="text-center" id="tp">
+    <input class="btn-danger btn col-lg-3" type="button" id="repeter" value="repeter">
+    <input class="btn-success btn col-lg-3"  type="button" id="jouer" value="jouer">
+</div>
+
+
+<div id="back">
+        <div>
+            <div><img id="ic1" src="icon/Icon3.png"></div>
+            <div><img id="ic2" src="icon/Icon4.png"></div>
+        </div>
+</div>
+</body>
+</html>
